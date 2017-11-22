@@ -1,0 +1,12 @@
+<% layout( 'layout' ) -%>
+
+<% if(posts.length > 0) { %>
+	<% for (var i = 0; i < posts.length; i++) { %>
+		<a href="/posts/show/<%= posts[i]._id %>"><h3><%= posts[i].title %></h3></a>
+		<img src="images/uploads/<%= posts[i].image %>" alt="" style="width:20%;height:20%">
+		<p><%= truncateText(posts[i].body, 10) %></p>
+		<p>Posted on <a href="/categories/show/<%= posts[i].category %>"><%= posts[i].category %></a> by <%= posts[i].author %> at <%= moment(posts[i].date).format("MM-DD-YYYY") %></p>
+		<a href="/posts/show/<%= posts[i]._id %>" class="btn btn-primary">Show</a>
+		<a href="/posts/delete/<%= posts[i]._id %>" class="btn btn-danger">Delete</a>
+	<% } %>
+<% } %>
